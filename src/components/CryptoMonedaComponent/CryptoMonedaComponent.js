@@ -66,6 +66,7 @@ const CryptoMonedaComponent = () => {
           data: response.data.prices.map(x => { return x[1].toFixed(3)})
       }]
       
+      optionsChart.title.text = "Precio de la moneda " + optionSelected.id + " de hace 30 días";
       optionsChart.xaxis.categories =  response.data.prices.map(x => { return new Date(x[0]).toISOString().split('T')[0]})
       setChartOptio0n(optionsChart);
       setChartData(dataChart);
