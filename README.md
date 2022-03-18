@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+El proyecto se encuentra deployado en la plataforma heroku en esta url [cripto-currency](https://cripto-currency.herokuapp.com/)
+
 ## Available Scripts
 
 In the project directory, you can run:
