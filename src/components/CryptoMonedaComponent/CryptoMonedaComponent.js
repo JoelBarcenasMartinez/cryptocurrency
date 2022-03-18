@@ -87,6 +87,9 @@ const CryptoMonedaComponent = () => {
           options={options}
           getOptionLabel={(option) => option.name}
           getOptionSelected={(option, value) => option === value}
+          onOpen={()=>{
+            busqueda(undefined);
+          }}
           onChange={(event,selected) => {
             getChartData(selected);
           }}
