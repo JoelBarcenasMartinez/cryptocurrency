@@ -8,6 +8,7 @@ import Axios from "axios";
 import ReactApexChart from 'react-apexcharts';
 
 const CryptoMonedaComponent = () => {
+  
   const [options, setOptions] = useState([]);
   const [chartData, setChartData] = useState([]);
   const [chartOption, setChartOptio0n] =  useState({});
@@ -41,7 +42,12 @@ const CryptoMonedaComponent = () => {
     };
   const busqueda = (value) => {
     console.log(value);
-    Axios.get("https://api.coingecko.com/api/v3/search?query=" + value)
+    let url = "https://api.coingecko.com/api/v3/search";
+    if(value){
+      url += "?query=" + value;
+    }
+
+    Axios.get(url)
       .then(function (response) {
         setOptions(response.data.coins);
         console.log(response);
@@ -51,7 +57,6 @@ const CryptoMonedaComponent = () => {
         console.log(error);
       });
   };
-
   const getChartData = (optionSelected) => {
     Axios.get("https://api.coingecko.com/api/v3/coins/"+ optionSelected.id +"/market_chart?vs_currency=mxn&days=30&interval=daily")
     .then(function (response) {
@@ -73,7 +78,7 @@ const CryptoMonedaComponent = () => {
   return (
     <Container>
       <Grid item xs={12} align="center">
-        <h1>Selecciona una moneda</h1>
+        <h1>Escriba y seleccione una moneda</h1>
       </Grid>
       <Grid item xs={12} align="center">
         <Autocomplete
