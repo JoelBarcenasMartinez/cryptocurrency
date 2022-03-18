@@ -100,6 +100,9 @@ const CryptoMonedaComponent = () => {
               onChange={(input) => {
                 busqueda(input.target.value);
               }}
+              onFocus= {(input) => {
+                busqueda(input.target.value);
+              }}
               label="Cripto Moneda"
               variant="outlined"
             />
