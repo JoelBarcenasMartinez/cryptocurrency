@@ -58,6 +58,9 @@ const CryptoMonedaComponent = () => {
       });
   };
   const getChartData = (optionSelected) => {
+    if(!optionSelected){
+      setChartData([]);
+    }
     Axios.get("https://api.coingecko.com/api/v3/coins/"+ optionSelected.id +"/market_chart?vs_currency=mxn&days=30&interval=daily")
     .then(function (response) {
       console.log( response.data.prices.map(x => { return [new Date(x[0]),x[1]]}));
@@ -90,8 +93,11 @@ const CryptoMonedaComponent = () => {
           onOpen={()=>{
             busqueda(undefined);
           }}
-          onChange={(event,selected) => {
-            getChartData(selected);
+          onChange={(event, value, reason) => {
+            if(reason=== "clear" || reason=== "remove-option"){
+              getChartData(undefined);
+            }
+            getChartData(value);
           }}
           style={{ width: 300 }}
           renderInput={(params) => (
